@@ -1,10 +1,8 @@
-# Application Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: app
@@ -15,11 +13,21 @@ spec:
     spec:
       containers:
       - name: app
-        image: happyivanzuba/hw2:latest
+        image: happyivanzuba/hw2_backend
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         env:
-        - name: PGHOST
-          value: db
-        - name: PGUSER 
-          value: postgres
-        - name: PGDATABASE
-          value: postgres
+          - name: PGHOST
+            value: db
+          - name: PGPORT
+            value: "5432"
+          - name: PGUSER
+            value: "postgres"
+          - name: PGPASSWORD
+            value: "postgres"
+          - name: PGDATABASE
+            value: "postgres"
+        ports:
+        - containerPort: 3000

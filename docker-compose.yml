@@ -18,6 +18,7 @@ services:
       - ./docker/backend/.env
     ports:
       - 3000:3000
+    platform: linux/arm64
 
 volumes:
   psql_hw:
