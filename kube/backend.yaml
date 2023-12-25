@@ -20,12 +20,10 @@ spec:
             cpu: "500m"
         env:
           - name: PGHOST
-            value: db
+            value: db.default.svc.cluster.local
           - name: PGPORT
             value: "5432"
           - name: PGUSER
-            value: "postgres"
-          - name: PGPASSWORD
             value: "postgres"
           - name: PGDATABASE
             value: "postgres"

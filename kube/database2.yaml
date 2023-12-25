@@ -1,12 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: db
 spec:
   selector:
     matchLabels:
       app: postgres
-  replicas: 1
   template:
     metadata:
       labels:
@@ -18,7 +17,7 @@ spec:
         resources:
           limits:
             memory: "128Mi"
-            cpu: "300m"
+            cpu: "500m"
         ports:
         - containerPort: 5432
         volumeMounts:
